@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Add Image{% endblock title %}
+{% block content %}
+    <h2>Add Image</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Submit</button>
+    </form>
+    <h3>
+        <a href="{% url 'ledger:recipe_detail' pk=view.kwargs.pk %}">Cancel</a>
+    </h3>
+{% endblock content %}

@@ -3,12 +3,16 @@
 {% block title %}
     {{ recipe.name }}
 {% endblock title %}
-<h2>{{ recipe.name }}</h2>
 {% block content %}
+    <h2>{{ recipe.name }}</h2>
     <h3>by {{ recipe.author }}</h3>
     <ul>
         {% for ingredient in recipe.ingredients.all %}
             <li>{{ ingredient.quantity }} {{ ingredient.ingredient.name }}</li>
         {% endfor %}
     </ul>
+    {% for image in recipe.image.all %}<img src="{{ image.image.url }}" alt="{{ image.description }}">{% endfor %}
+    <h3>
+        <a href="{% url 'ledger:recipe_add_image' pk=recipe.pk %}">Add Images</a>
+    </h3>
 {% endblock content %}
